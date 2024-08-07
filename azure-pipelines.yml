@@ -1,0 +1,25 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  keyVaultName: 'Test123-AKV'
+  secretName: 'TestSecret'
+
+stages:
+- stage: FetchAndPrintSecret
+  jobs:
+  - job: FetchSecret
+    steps:
+    - task: AzureKeyVault@2
+      inputs:
+        azureSubscription: 'SPN-Test123-KV'
+        KeyVaultName: $(keyVaultName)
+        SecretsFilter: $(secretName)
+        RunAsPreJob: true
+
+    - script: |
+        echo "The secret value is: $(your-secret-name)"
+      displayName: 'Print secret value'
