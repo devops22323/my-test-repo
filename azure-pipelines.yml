@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'  # Change this to use a Windows agent
 
 variables:
   keyVaultName: 'Test123-AKV'
@@ -15,7 +15,7 @@ stages:
     steps:
     - task: AzureKeyVault@2
       inputs:
-        azureSubscription: 'SPN-Test123-KV'
+        azureSubscription: 'SPN-AKV'
         KeyVaultName: $(keyVaultName)
         SecretsFilter: $(secretName)
         RunAsPreJob: true
@@ -23,3 +23,5 @@ stages:
     - script: |
         echo "The secret value is: $(your-secret-name)"
       displayName: 'Print secret value'
+      shell: powershell  # Ensure the script runs in PowerShell on Windows
+
