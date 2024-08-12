@@ -23,5 +23,5 @@ stages:
     - script: |
         echo "The secret value is: $(your-secret-name)"
       displayName: 'Print secret value'
-      shell: powershell  # Ensure the script runs in PowerShell on Windows
+  
 
