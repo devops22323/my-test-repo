@@ -15,7 +15,7 @@ stages:
     steps:
     - task: AzureKeyVault@2
       inputs:
-        azureSubscription: 'SPN-Test123-KV'
+        azureSubscription: 'SPN-AKV'
         KeyVaultName: $(keyVaultName)
         SecretsFilter: $(secretName)
         RunAsPreJob: true
