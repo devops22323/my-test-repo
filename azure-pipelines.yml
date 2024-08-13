@@ -2,8 +2,7 @@ trigger:
 - main
 
 pool:
-  name: 'win-agent-pool'  # Use the self-hosted agent pool
-
+  vmImage: 'windows-latest'  # Use a Microsoft-hosted Windows agent
 variables:
   keyVaultName: 'Test123-AKV'
   secretName: 'TestSecret'
